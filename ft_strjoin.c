@@ -1,28 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anes-sal <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/21 12:21:18 by anes-sal          #+#    #+#             */
+/*   Updated: 2026/10/22 18:34:34 by anes-sal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	total1;
-	size_t	total2;
+	size_t	len1;
+	size_t	len2;
 	size_t	i;
-	char	*s;
+	char	*str;
 
 	if (!s1 || !s2)
 		return (NULL);
-	total1 = ft_strlen(s1);
-	total2 = ft_strlen(s2);
-	s = malloc(total1 + total2 + 1);
-	if (!s)
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	str = malloc(len1 + len2 + 1);
+	if (!str)
 		return (NULL);
 	i = 0;
-	while (i < total1)
-		s[i++] = s1[i - 1];
-	while (i < total1 + total2)
+	while (s1[i])
 	{
-		s[i] = s2[i - total1];
+		str[i] = s1[i];
 		i++;
 	}
-	s[i] = '\0';
-	return (s);
+	while (s2[i - len1])
+	{
+		str[i] = s2[i - len1];
+		i++;
+	}
+	str[i] = 0;
+	return (str);
 }
