@@ -6,7 +6,7 @@
 /*   By: anes-sal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/21 11:30:50 by anes-sal          #+#    #+#             */
-/*   Updated: 2026/10/25 00:13:15 by anes-sal         ###   ########.fr       */
+/*   Updated: 2026/10/25 16:31:02 by anes-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		str[i] = s[start + i];
 		i++;
 	}
-	str[i] = '\0';
+	str[i] = 0;
 	return (str);
 }

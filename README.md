@@ -140,7 +140,7 @@ Strings use the C convention of a terminating NUL byte (`'\0'`).
 
 | Function | Purpose |
 | --- | --- |
-| `ft_strlen` | Count characters before the terminating NUL byte. |
+| `ft_strlen` | Count bytes before the terminating NUL byte. |
 | `ft_strlcpy` | Copy a string into a bounded destination; return the source length. |
 | `ft_strlcat` | Append within a destination size limit; return the total length attempted. |
 | `ft_strchr`, `ft_strrchr` | Find the first or last occurrence of a character. |
@@ -225,24 +225,3 @@ the source for their exact behavior.
 
 For the exact campus submission and evaluation requirements, consult the Libft
 subject provided through the 42 intranet.
-
-### AI use
-
-OpenAI Codex assisted with these project tasks:
-
-- Reviewing the source files against the supplied Libft v19.3 subject and checking
-  function declarations, permitted external functions, and submission contents.
-- Creating and correcting the `Makefile` so the default build includes all 43
-  mandatory functions and supports dependency tracking and cleanup.
-- Correcting `ft_atoi` whitespace handling and signed-minimum conversion,
-  `ft_calloc` zero-size allocation, and `ft_itoa` magnitude handling.
-- Refactoring `ft_split` and `ft_lstmap` into short functions with linear traversal
-  and allocation-failure cleanup, and correcting source/header formatting and
-  public declarations for Norm compliance.
-- Writing and updating this README, selecting references, and creating study
-  questions kept outside the submission repository.
-- Running Norminette, compilation and build checks, behavioral checks, overflow
-  instrumentation, and allocation-failure probes using temporary test files.
-
-AI-assisted implementation changes should be studied and independently reviewed
-so the author can explain the algorithms, ownership rules, and failure paths.

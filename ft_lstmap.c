@@ -6,7 +6,7 @@
 /*   By: anes-sal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/24 17:18:07 by anes-sal          #+#    #+#             */
-/*   Updated: 2026/10/25 00:13:15 by anes-sal         ###   ########.fr       */
+/*   Updated: 2026/10/25 16:33:04 by anes-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,34 @@
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*head;
-	t_list	**tail;
+	t_list	*current;
+	t_list	*node;
 	void	*content;
 
-	if (!f || !del)
+	if (!lst || !f || !del)
 		return (NULL);
 	head = NULL;
-	tail = &head;
-	while (lst)
+	current = lst;
+	content = f(current->content);
+	head = ft_lstnew(content);
+	if (!head)
 	{
-		content = f(lst->content);
-		*tail = ft_lstnew(content);
-		if (!*tail)
+		del(content);
+		return (NULL);
+	}
+	current = current->next;
+	while (current)
+	{
+		content = f(current->content);
+		node = ft_lstnew(content);
+		if (!node)
 		{
 			del(content);
 			ft_lstclear(&head, del);
 			return (NULL);
 		}
-		tail = &(*tail)->next;
-		lst = lst->next;
+		ft_lstadd_back(&head, node);
+		current = current->next;
 	}
 	return (head);
 }

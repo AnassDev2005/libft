@@ -6,49 +6,57 @@
 /*   By: anes-sal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 11:46:52 by anes-sal          #+#    #+#             */
-/*   Updated: 2026/10/25 00:13:15 by anes-sal         ###   ########.fr       */
+/*   Updated: 2026/10/25 16:33:36 by anes-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	num_len(int n)
+static int	num_len(long n)
 {
-	int	len;
+	int	i;
 
-	len = 1;
+	i = 0;
+	if (n == 0)
+		i++;
 	if (n < 0)
-		len++;
-	while (n / 10 != 0)
 	{
-		n /= 10;
-		len++;
+		n = -n;
+		i++;
 	}
-	return (len);
+	while (n > 0)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
 }
-
 char	*ft_itoa(int n)
 {
-	char			*num;
-	int				len;
-	unsigned int	magnitude;
+	char	*num;
+	int		i;
+	int		len;
+	long	ln;
 
-	len = num_len(n);
+	ln = (long)n;
+	len = num_len(ln);
 	num = malloc(len + 1);
 	if (!num)
 		return (NULL);
-	num[len] = '\0';
-	magnitude = (unsigned int)n;
-	if (n < 0)
-		magnitude = 0u - magnitude;
-	if (n == 0)
+	i = len - 1;
+	if (ln == 0)
 		num[0] = '0';
-	while (magnitude != 0)
+	if (ln < 0)
 	{
-		num[--len] = magnitude % 10 + '0';
-		magnitude /= 10;
-	}
-	if (n < 0)
 		num[0] = '-';
+		ln = -ln;
+	}
+	while (ln > 0)
+	{
+		num[i] = (ln % 10) + '0';
+		ln = ln / 10;
+		i--;
+	}
+	num[len] = 0;
 	return (num);
 }

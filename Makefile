@@ -54,8 +54,8 @@ SRCS = ft_isalpha.c \
 
 OBJS = $(SRCS:.c=.o)
 
-all: $(NAME)
 
+all: $(NAME)
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $(OBJS)
 
