@@ -6,16 +6,16 @@
 /*   By: anes-sal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 10:34:22 by anes-sal          #+#    #+#             */
-/*   Updated: 2026/10/22 11:45:37 by anes-sal         ###   ########.fr       */
+/*   Updated: 2026/10/25 00:13:15 by anes-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(char const *s, char c)
+static size_t	count_words(char const *s, char c)
 {
-	int	i;
-	int	count;
+	size_t	i;
+	size_t	count;
 
 	i = 0;
 	count = 0;
@@ -27,60 +27,71 @@ static int	count_words(char const *s, char c)
 	}
 	return (count);
 }
-static int	len_word(char const *s, char c)
+
+static char	**free_all(char **words, size_t count)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (*(s + i) && *(s + i) != c)
+	while (i < count)
 	{
+		free(words[i]);
 		i++;
 	}
-	return (i);
-}
-static char	**free_all(char **str, int j)
-{
-	int	i;
-
-	i = 0;
-	while (i < j)
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
+	free(words);
 	return (NULL);
 }
+
+static char	*copy_word(char const *s, char c)
+{
+	size_t	len;
+	char	*word;
+
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	word = malloc(len + 1);
+	if (!word)
+		return (NULL);
+	ft_memcpy(word, s, len);
+	word[len] = '\0';
+	return (word);
+}
+
+static char	**fill_words(char **words, char const *s, char c)
+{
+	size_t	i;
+
+	i = 0;
+	while (*s)
+	{
+		if (*s == c)
+			s++;
+		else
+		{
+			words[i] = copy_word(s, c);
+			if (!words[i])
+				return (free_all(words, i));
+			s += ft_strlen(words[i]);
+			i++;
+		}
+	}
+	words[i] = NULL;
+	return (words);
+}
+
 char	**ft_split(char const *s, char c)
 {
-	char	**str;
-	int		words;
-	int		len;
-	int		i;
-	int		j;
+	size_t	count;
+	char	**words;
 
 	if (!s)
 		return (NULL);
-	words = count_words(s, c);
-	str = malloc(sizeof(char *) * (words + 1));
-	if (!str)
+	count = count_words(s, c);
+	if (count >= (size_t)-1 / sizeof(*words))
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s[i] && j < words)
-	{
-		if (s[i] == c)
-			i++;
-		else
-		{
-			len = len_word(s + i, c);
-			str[j] = ft_substr(s, i, len);
-			if (!str[j])
-				return (free_all(str, j));
-			i += len;
-			j++;
-		}
-	}
-	str[j] = NULL;
-	return (str);
+	words = malloc(sizeof(*words) * (count + 1));
+	if (!words)
+		return (NULL);
+	return (fill_words(words, s, c));
 }

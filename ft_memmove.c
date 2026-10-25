@@ -6,7 +6,7 @@
 /*   By: anes-sal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 09:42:32 by anes-sal          #+#    #+#             */
-/*   Updated: 2026/10/24 18:34:19 by anes-sal         ###   ########.fr       */
+/*   Updated: 2026/10/25 00:13:15 by anes-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	p = (unsigned char *)dest;
 	s = (const unsigned char *)src;
-	if ((size_t)p >(size_t)s)
+	if ((size_t)p > (size_t)s)
 	{
 		i = n;
 		while (i > 0)
@@ -40,5 +40,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	return (dest);
 }
-char str[] = "abcd";
-char str2[] = "efg";

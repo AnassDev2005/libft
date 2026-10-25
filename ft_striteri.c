@@ -6,7 +6,7 @@
 /*   By: anes-sal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 12:37:33 by anes-sal          #+#    #+#             */
-/*   Updated: 2026/10/22 12:48:18 by anes-sal         ###   ########.fr       */
+/*   Updated: 2026/10/25 00:13:15 by anes-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,3 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 		i++;
 	}
 }
-/* void	change(unsigned int i, char *c) */
-/* { */
-/* 	if (i % 2 == 0) */
-/* 		*c = 'X'; */
-/* } */
-/* int main(){ */
-/*     char s[] = "hello"; */
-/*     ft_striteri(s , change); */
-/*     printf("%s" , s); */
-/* } */

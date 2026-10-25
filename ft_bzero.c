@@ -6,9 +6,12 @@
 /*   By: anes-sal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/20 09:03:52 by anes-sal          #+#    #+#             */
-/*   Updated: 2026/10/20 09:23:53 by anes-sal         ###   ########.fr       */
+/*   Updated: 2026/10/25 00:13:15 by anes-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+
 #include "libft.h"
 
 void	ft_bzero(void *s, size_t n)
