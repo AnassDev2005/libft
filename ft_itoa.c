@@ -6,7 +6,7 @@
 /*   By: anes-sal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 11:46:52 by anes-sal          #+#    #+#             */
-/*   Updated: 2026/10/25 16:33:36 by anes-sal         ###   ########.fr       */
+/*   Updated: 2026/10/26 09:44:32 by anes-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ static int	num_len(long n)
 	}
 	return (i);
 }
+
 char	*ft_itoa(int n)
 {
 	char	*num;
-	int		i;
 	int		len;
 	long	ln;
 
@@ -43,7 +43,7 @@ char	*ft_itoa(int n)
 	num = malloc(len + 1);
 	if (!num)
 		return (NULL);
-	i = len - 1;
+	num[len] = '\0';
 	if (ln == 0)
 		num[0] = '0';
 	if (ln < 0)
@@ -53,10 +53,8 @@ char	*ft_itoa(int n)
 	}
 	while (ln > 0)
 	{
-		num[i] = (ln % 10) + '0';
-		ln = ln / 10;
-		i--;
+		num[--len] = (ln % 10) + '0';
+		ln /= 10;
 	}
-	num[len] = 0;
 	return (num);
 }

@@ -6,7 +6,7 @@
 /*   By: anes-sal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 12:13:17 by anes-sal          #+#    #+#             */
-/*   Updated: 2026/10/22 12:36:18 by anes-sal         ###   ########.fr       */
+/*   Updated: 2026/10/26 09:41:05 by anes-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned int	i;
-	char			*str;
+	size_t	i;
+	char	*str;
 
 	if (!s || !f)
 		return (NULL);
@@ -25,7 +25,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	while (str[i])
 	{
-		str[i] = f(i, str[i]);
+		str[i] = f((unsigned int)i, str[i]);
 		i++;
 	}
 	return (str);
