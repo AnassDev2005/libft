@@ -1,9 +1,10 @@
+
 NAME = libft.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
 AR = ar
 ARFLAGS = rcs
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
 HEADERS = libft.h
@@ -54,13 +55,12 @@ SRCS = ft_isalpha.c \
 
 OBJS = $(SRCS:.c=.o)
 
-
 all: $(NAME)
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $(OBJS)
 
-%.o: %.c $(HEADERS) Makefile
-	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
+%.o : %.c $(HEADRERS) Makefile
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
