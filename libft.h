@@ -6,14 +6,13 @@
 /*   By: anes-sal <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 16:27:54 by anes-sal          #+#    #+#             */
-/*   Updated: 2026/10/28 11:24:50 by anes-sal         ###   ########.fr       */
+/*   Updated: 2026/10/28 22:54:20 by anes-sal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stddef.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 

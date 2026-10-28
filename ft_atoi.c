@@ -14,29 +14,25 @@
 
 int	ft_atoi(const char *nptr)
 {
-	int		sign;
-	size_t	i;
-	long	result;
+	int				sign;
+	unsigned long	result;
+	unsigned long	limit;
 
-	result = 0;
-	i = 0;
 	sign = 1;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
+	result = 0;
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == ' ')
+		nptr++;
+	if (*nptr == '-')
+		sign = -1;
+	if (*nptr == '-' || *nptr == '+')
+		nptr++;
+	limit = (unsigned long)9223372036854775807 + (sign < 0);
+	while (*nptr >= '0' && *nptr <= '9')
 	{
-		i++;
+		if (result > (limit - (*nptr - '0')) / 10)
+			return (-(sign == 1));
+		result = result * 10 + (*nptr - '0');
+		nptr++;
 	}
-	if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i] == '-')
-		{
-			sign *= -1;
-		}
-		i++;
-	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		result = result * 10 + (nptr[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	return ((int)(result * sign));
 }

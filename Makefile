@@ -59,7 +59,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(AR) $(ARFLAGS) $@ $(OBJS)
 
-%.o : %.c $(HEADRERS) Makefile
+%.o: %.c $(HEADERS) Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
